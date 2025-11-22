@@ -192,6 +192,13 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
     onLogout()
   }
 
+  const onUpdateProduct = (id: string, updatedData: any) => {
+    setProducts((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, ...updatedData } : p))
+    );
+  };
+
+
   const handlePageChange = (newPage: CurrentPage) => {
     setCurrentPage(newPage)
     if (onViewChange) {
@@ -633,14 +640,42 @@ function ItemsPage({
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    onAddProduct({
-      ...formData,
-      status: "In Stock" as const,
-      locations: [{ location: "Main Warehouse", quantity: formData.totalStock }],
-    })
-    setShowForm(false)
-  }
+    e.preventDefault();
+
+    if (isEditing) {
+      onUpdateProduct(editingProductData.id, {
+        ...formData,
+        status:
+          formData.totalStock === 0
+            ? "Out of Stock"
+            : formData.totalStock <= formData.reorderMin
+              ? "Low Stock"
+              : "In Stock",
+        locations: [{ location: "Main Warehouse", quantity: formData.totalStock }],
+      });
+
+      setIsEditing(false);
+      setEditingProductData(null);
+    } else {
+      onAddProduct({
+        ...formData,
+        status:
+          formData.totalStock === 0
+            ? "Out of Stock"
+            : formData.totalStock <= formData.reorderMin
+              ? "Low Stock"
+              : "In Stock",
+        locations: [{ location: "Main Warehouse", quantity: formData.totalStock }],
+      });
+    }
+
+    setShowForm(false);
+  };
+
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingProductData, setEditingProductData] = useState<any>(null);
+
 
   return (
     <div className="p-8 space-y-6">
@@ -833,13 +868,35 @@ function ItemsPage({
                   <td className="px-6 py-4 text-sm text-gray-900">{product.price}</td>
                   <td className="px-6 py-4 text-sm">
                     <button
-                      onClick={() => setEditingProductData(product)}
+                      onClick={() => {
+                        setIsEditing(true);
+                        setShowForm(true);
+                        setEditingProductData(product);
+
+                        setFormData({
+                          sku: product.sku,
+                          name: product.name,
+                          category: product.category,
+                          totalStock: product.totalStock,
+                          reorderMin: product.reorderMin,
+                          price: product.price,
+                          description: product.description,
+                        });
+                      }}
                       className="text-red-600 hover:text-red-700 font-semibold"
                     >
                       Edit
                     </button>
+                    <button
+                      onClick={() => onDeleteProduct(product.id)}
+                      className="text-gray-600 hover:text-gray-900 ml-4 font-semibold"
+                    >
+                      Delete
+                    </button>
+
 
                   </td>
+
                 </tr>
               ))}
             </tbody>
