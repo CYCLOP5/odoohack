@@ -129,8 +129,8 @@ export default function AuthPage({ onBackToLanding, onLoginSuccess }: AuthPagePr
             {view === "reset-password" && "Set New Password"}
           </h3>
           <p className="text-center text-gray-600 text-sm mb-6">
-            {view === "login" && "Don't have an account? "}
-            {view === "signup" && "Already have an account? "}
+            {/* {view === "login" && "Don't have an account? "} */}
+            {/* {view === "signup" && "Already have an account? "} */}
             {view === "forgot-password" && "Enter your email to receive an OTP"}
             {view === "reset-password" && "Enter the OTP and your new password"}
           </p>
