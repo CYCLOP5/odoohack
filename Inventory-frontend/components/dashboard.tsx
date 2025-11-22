@@ -4,6 +4,19 @@ import type React from "react"
 
 import { useState } from "react"
 import { AlertCircle, CheckCircle } from "lucide-react"
+import { RiDashboardLine } from "react-icons/ri";
+import { CiCircleList } from "react-icons/ci";
+import { LuReceiptIndianRupee } from "react-icons/lu";
+import { CiDeliveryTruck } from "react-icons/ci";
+import { BiTransferAlt } from "react-icons/bi";
+import { TbAdjustmentsCog } from "react-icons/tb";
+import { BiSearchAlt } from "react-icons/bi";
+import { BsTags } from "react-icons/bs";
+import { GoWorkflow } from "react-icons/go";
+import { FiSettings } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
+import { FiLogOut } from "react-icons/fi";
+import { TbReportAnalytics } from "react-icons/tb";
 
 // Define interfaces for better type safety
 interface Product {
@@ -210,7 +223,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
               className={`w-full flex items-center gap-3 px-3 py-2 rounded transition ${currentPage === "dashboard" ? "bg-red-700" : "hover:bg-red-500"
                 }`}
             >
-              <span>📊</span>
+              <span><RiDashboardLine size={20} /></span>
               {sidebarOpen && <span>Dashboard</span>}
             </button>
           </div>
@@ -223,7 +236,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
               className={`w-full flex items-center gap-3 px-3 py-2 rounded transition ${currentPage === "items" ? "bg-red-700" : "hover:bg-red-500"
                 }`}
             >
-              <span>📦</span>
+              <span><CiCircleList size={20} /></span>
               {sidebarOpen && <span>Items</span>}
             </button>
           </div>
@@ -237,7 +250,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded text-sm transition ${currentPage === "receipts" ? "bg-red-700" : "hover:bg-red-500"
                   }`}
               >
-                <span>📥</span>
+                <span><LuReceiptIndianRupee size={20} /></span>
                 {sidebarOpen && <span>Receipts</span>}
               </button>
               <button
@@ -245,7 +258,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded text-sm transition ${currentPage === "deliveries" ? "bg-red-700" : "hover:bg-red-500"
                   }`}
               >
-                <span>📤</span>
+                <span><CiDeliveryTruck size={20} /></span>
                 {sidebarOpen && <span>Deliveries</span>}
               </button>
               <button
@@ -253,7 +266,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded text-sm transition ${currentPage === "transfers" ? "bg-red-700" : "hover:bg-red-500"
                   }`}
               >
-                <span>🚚</span>
+                <span><BiTransferAlt size={20} /></span>
                 {sidebarOpen && <span>Transfers</span>}
               </button>
               <button
@@ -261,7 +274,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded text-sm transition ${currentPage === "adjustments" ? "bg-red-700" : "hover:bg-red-500"
                   }`}
               >
-                <span>⚙️</span>
+                <span><TbAdjustmentsCog size={20} /></span>
                 {sidebarOpen && <span>Adjustments</span>}
               </button>
             </div>
@@ -276,7 +289,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded text-sm transition ${currentPage === "search" ? "bg-red-700" : "hover:bg-red-500"
                   }`}
               >
-                <span>🔍</span>
+                <span><BiSearchAlt size={20} /></span>
                 {sidebarOpen && <span>Search</span>}
               </button>
               <button
@@ -284,7 +297,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded text-sm transition ${currentPage === "tags" ? "bg-red-700" : "hover:bg-red-500"
                   }`}
               >
-                <span>🏷️</span>
+                <span><BsTags size={20} /></span>
                 {sidebarOpen && <span>Tags</span>}
               </button>
               <button
@@ -292,7 +305,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded text-sm transition ${currentPage === "workflows" ? "bg-red-700" : "hover:bg-red-500"
                   }`}
               >
-                <span>⚡</span>
+                <span><GoWorkflow size={20} /></span>
                 {sidebarOpen && <span>Workflows</span>}
               </button>
             </div>
@@ -306,7 +319,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
               className={`w-full flex items-center gap-3 px-3 py-2 rounded transition ${currentPage === "reports" ? "bg-red-700" : "hover:bg-red-500"
                 }`}
             >
-              <span>📈</span>
+              <span><TbReportAnalytics size={20} /></span>
               {sidebarOpen && <span>Reports</span>}
             </button>
           </div>
@@ -316,33 +329,30 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
             {sidebarOpen && <h3 className="text-xs font-semibold text-red-200 uppercase px-2 mb-3">System</h3>}
             <button
               onClick={() => handlePageChange("settings")}
-              className={`w-full flex items-center gap-3 px-3 py-2 rounded transition ${currentPage === "settings" ? "bg-red-700" : "hover:bg-red-500"
+              className={`w-full flex items-center gap-3 px-3 py-0 rounded transition ${currentPage === "settings" ? "bg-red-700" : "hover:bg-red-500"
                 }`}
             >
-              <span>⚙️</span>
+              <span><FiSettings size={20} /></span>
               {sidebarOpen && <span>Settings</span>}
             </button>
           </div>
-        </nav>
-
-        {/* User Profile Section */}
-        <div className="border-t border-red-700 p-4 space-y-2">
           <button
             onClick={() => handlePageChange("profile")}
-            className={`w-full flex items-center gap-3 px-3 py-2 rounded transition ${currentPage === "profile" ? "bg-red-700" : "hover:bg-red-500"
+            className={`w-full flex items-center gap-3 px-3 py-0 rounded transition ${currentPage === "profile" ? "bg-red-700" : "hover:bg-red-500"
               }`}
           >
-            <span>👤</span>
+            <span><CgProfile size={20} /></span>
             {sidebarOpen && <span>Profile</span>}
           </button>
           <button
             onClick={() => setShowLogoutConfirm(true)}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded hover:bg-red-500 transition text-red-100"
+            className="w-full flex items-center gap-3 px-3 py-0 rounded hover:bg-red-500 transition text-red-100"
           >
-            <span>🚪</span>
+            <span><FiLogOut size={20} /></span>
             {sidebarOpen && <span>Logout</span>}
           </button>
-        </div>
+        </nav>
+
       </div>
 
       {/* Main Content- Complete Dashboard shit is here */}
