@@ -1,5 +1,4 @@
 
-**UI Flow **
 1. App bootstrap
    - `app/page.tsx` runs on client. It calls `getFirebaseAuth()` from `lib/firebase.ts` and registers `onAuthStateChanged(auth, callback)`.
    - `onAuthStateChanged` sets local state `currentView: "landing" | "auth" | "app"`. Loading state is handled while waiting for Auth resolution.
