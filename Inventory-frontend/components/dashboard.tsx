@@ -188,7 +188,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
 
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Left Sidebar */}
+      {/* Left Sidebar - Complete Red Sidebar shit is here */}
       <div
         className={`${sidebarOpen ? "w-64" : "w-20"} bg-red-600 text-white transition-all duration-300 flex flex-col`}
       >
@@ -345,7 +345,7 @@ export default function Dashboard({ onLogout, initialView = "dashboard", onViewC
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* Main Content- Complete Dashboard shit is here */}
       <div className="flex-1 overflow-auto">
         {currentPage === "dashboard" && (
           <DashboardPage
